@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    
+    {% if id %}
+        <form action="/edit" method="post" enctype="multipart/form-data">
+            <input type="text" name="id" value="{{ id }}" style="display: none;">
+            <input type="text" name="file_iter" value="{{ iter }}" style="display: none;">
+            <input type="file" name="file">
+            <input type="submit" value="Upload">
+        </form>
+        <form action="/music" method="post" enctype="multipart/form-data">
+            <input type="text" name="id" value="{{ id }}" style="display: none;">
+            <input type="text" name="file_iter" value="{{ iter }}" style="display: none;">
+            <input type="file" name="file">
+            <input type="submit" value="Add music">
+        </form>
+        <form action="/done" method="post">
+            <input type="text" name="id" value="{{ id }}" style="display: none;">
+            <input type="submit" value="Done">
+        </form>
+    {% else %}
+        <form action="/edit" method="post" enctype="multipart/form-data">
+            <input type="text" name="id" value="0" style="display: none;">
+            <input type="text" name="file_iter" value="0" style="display: none;">
+            <input type="file" name="file">
+            <input type="submit" value="Upload">
+        </form>
+
+        
+    {% endif %}
+</body>
+</html>
